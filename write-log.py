@@ -29,6 +29,6 @@ os.makedirs(os.path.dirname(file_path), exist_ok=True)
 with open(file_path, 'a') as f:
     for n in range(log_num):
         t = datetime.now(timezone.utc)
-        log = '[{}]    fakelogs=\{"microseconds":"{}"\}.'.format(t.isoformat(), t.microsecond)
-        print(log)
-        # log = "[{}]    fakelogs={\"ss\":\"{}\", \"index\":\"{}\"}".format(t.isoformat(), t.microsecond, n)
+        log = '[{}]    fakelogs={{"index":"{}", "microseconds":"{}"}}\n'.format(
+            t.isoformat(), n, t.microsecond)
+        f.write(log)
