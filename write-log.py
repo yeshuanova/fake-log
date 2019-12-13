@@ -3,20 +3,21 @@
 """
 import os
 import argparse
+import random
 
 from datetime import datetime, timezone
 from os.path import join as pjoin
 
 
 parser = argparse.ArgumentParser(description='Write test logs')
-parser.add_argument('-n', '--line-num', type=int,
-                    dest='log_num', default=1000, help='Line numbers')
+parser.add_argument('-n', '--max-line', type=int,
+                    dest='max_num', default=1500, help='Line numbers')
 parser.add_argument('-p', '--path', type=str, dest='path',
                     default=pjoin(os.path.dirname(os.path.abspath(__file__)), 'logs'), help='output path')
 
 args = parser.parse_args()
 
-log_num = args.log_num
+log_num = random.randint(500, args.max_num)
 path = args.path
 
 date = datetime.now(timezone.utc).date()
