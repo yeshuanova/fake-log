@@ -12,7 +12,7 @@ parser = argparse.ArgumentParser(description='Write test logs')
 parser.add_argument('-n', '--line-num', type=int,
                     dest='log_num', default=1000, help='Line numbers')
 parser.add_argument('-p', '--path', type=str, dest='path',
-                    default=pjoin(os.getcwd(), 'logs'), help='output path')
+                    default=pjoin(os.path.dirname(os.path.abspath(__file__)), 'logs'), help='output path')
 
 args = parser.parse_args()
 
